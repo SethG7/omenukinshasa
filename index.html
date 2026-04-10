@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O Menu Restaurant Kinshasa — Cuisine Afro-Urbaine</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Montserrat',sans-serif;background:#111010;color:#FAF6F0;overflow-x:hidden;}
+
+:root{
+  --or:#E8621A;
+  --or2:rgba(232,98,26,.10);
+  --orbrd:rgba(232,98,26,.28);
+  --bg:#000000;
+  --dark:#111010;
+  --card:#1a1714;
+  --card2:#201d18;
+  --brd:#2a2520;
+  --gray:#7a7068;
+  --lgray:#4a4540;
+  --cream:#FAF6F0;
+  --green:#25D366;
+  --nav-h:46px;
+  --gap:14px;
+  --mw:780px;
+}
+
+/* ══ HEADER ══ */
+.site-header{
+  background:#000000;
+  border-bottom:1px solid var(--brd);
+  padding:52px 20px 48px;
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.site-header::before{
+  content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(232,98,26,.07) 0%,transparent 65%);
+  pointer-events:none;
+}
+
+.h-logo{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;margin-bottom:24px;}
+.h-logo img{height:auto;width:min(90vw,520px);max-width:520px;object-fit:contain;}
+
+.h-tag{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--lgray);position:relative;z-index:1;}
+.h-sep{width:36px;height:1px;background:var(--brd);margin:20px auto;position:relative;z-index:1;}
+.h-intro{max-width:520px;margin:0 auto 28px;font-size:14px;font-weight:500;line-height:1.9;color:var(--cream);position:relative;z-index:1;}
+.h-intro strong{color:var(--or);font-weight:700;}
+.h-cta{display:flex;flex-direction:column;align-items:center;gap:12px;position:relative;z-index:1;}
+.cta-push{font-size:11px;font-weight:500;color:var(--gray);margin-top:10px;}
+.cta-push span{color:var(--or);}
+
+/* Bloc promo vendeur */
+.promo-hero{
+  background:linear-gradient(135deg,#1a0f04 0%,#220e00 100%);
+  border:1px solid rgba(232,98,26,.35);border-left:4px solid var(--or);
+  border-radius:14px;padding:22px 24px;
+  max-width:540px;margin:0 auto 28px;
+  position:relative;z-index:1;text-align:left;
+}
+.promo-hero .ph-title{font-size:15px;font-weight:900;color:#fff;margin-bottom:10px;line-height:1.4;}
+.promo-hero .ph-body{font-size:12.5px;font-weight:500;color:rgba(250,246,240,.9);line-height:1.8;}
+.promo-hero .ph-body strong{color:var(--or);}
+
+/* ══ BOUTONS ══ */
+.btn-cmd{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  background:var(--or);color:#fff;
+  font-family:'Montserrat',sans-serif;font-weight:900;font-size:15px;letter-spacing:.5px;
+  padding:15px 36px;border-radius:60px;border:none;cursor:pointer;
+  position:relative;overflow:hidden;
+  width:100%;max-width:300px;
+  animation:or-pulse 2.4s ease-in-out infinite;
+  transition:transform .2s;text-decoration:none;
+}
+.btn-cmd::before{content:'';position:absolute;top:-50%;left:-80%;width:55%;height:200%;background:linear-gradient(105deg,transparent 28%,rgba(255,255,255,.5) 50%,transparent 72%);transform:skewX(-15deg);animation:shine 2.4s ease-in-out infinite;pointer-events:none;}
+@keyframes or-pulse{0%,100%{box-shadow:0 4px 18px rgba(232,98,26,.42),0 0 0 0 rgba(232,98,26,.32);}50%{box-shadow:0 6px 32px rgba(232,98,26,.65),0 0 0 12px rgba(232,98,26,0);}}
+@keyframes shine{0%{left:-80%;opacity:0;}25%{opacity:1;}55%{left:120%;opacity:0;}100%{left:120%;opacity:0;}}
+.btn-cmd:hover{transform:translateY(-2px);}
+.btn-cmd>*{position:relative;z-index:1;}
+.btn-cmd svg{width:19px;height:19px;flex-shrink:0;}
+
+.btn-wa{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  background:transparent;color:var(--green);
+  font-family:'Montserrat',sans-serif;font-weight:600;font-size:12px;
+  padding:10px 22px;border-radius:60px;border:1.5px solid var(--green);
+  text-decoration:none;cursor:pointer;
+  transition:background .2s,color .2s;
+  width:100%;max-width:300px;
+}
+.btn-wa:hover{background:var(--green);color:#fff;}
+.btn-wa svg{width:16px;height:16px;fill:currentColor;flex-shrink:0;}
+
+/* ══ NAV ══ */
+.site-nav{
+  position:sticky;top:0;z-index:500;
+  background:var(--dark);border-bottom:1px solid var(--brd);
+  display:flex;overflow-x:auto;scrollbar-width:none;height:var(--nav-h);
+}
+.site-nav::-webkit-scrollbar{display:none;}
+.site-nav a{
+  flex-shrink:0;display:flex;align-items:center;padding:0 14px;
+  font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--gray);text-decoration:none;white-space:nowrap;
+  border-bottom:2px solid transparent;transition:color .2s,border-color .2s;
+}
+.site-nav a:hover{color:var(--cream);}
+.site-nav a.active{color:var(--or);border-bottom-color:var(--or);}
+
+/* ══ IMAGE COVER — pleine largeur, hauteur naturelle ══ */
+.illus-cover{
+  width:100%;
+  overflow:hidden;
+  position:relative;
+  background:#000;
+  border-bottom:1px solid var(--brd);
+  line-height:0;
+}
+.illus-cover img{
+  width:100%;
+  height:auto;
+  display:block;
+  object-fit:contain;
+  filter:brightness(.92);
+}
+.illus-caption{
+  position:absolute;bottom:12px;left:50%;transform:translateX(-50%);
+  background:rgba(0,0,0,.88);backdrop-filter:blur(8px);
+  border:1px solid var(--brd);border-radius:30px;
+  padding:8px 18px;
+  font-size:clamp(9px,2.2vw,11px);font-weight:600;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--cream);
+  white-space:nowrap;max-width:calc(100% - 32px);text-align:center;
+}
+.illus-caption span{color:var(--or);}
+@media(max-width:480px){.illus-caption{white-space:normal;font-size:10px;padding:7px 14px;letter-spacing:1px;}}
+
+/* ══ IMAGE 2 ══ */
+.illus-wrap{
+  width:100%;height:260px;overflow:hidden;
+  position:relative;background:var(--card);border-bottom:1px solid var(--brd);
+}
+.illus-wrap img{width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:brightness(.84);display:block;transition:transform .4s ease;}
+.illus-wrap:hover img{transform:scale(1.02);}
+
+/* ══ MAIN ══ */
+.site-main{max-width:var(--mw);margin:0 auto;padding:0 16px 60px;}
+.menu-section{padding-top:56px;}
+
+.sec-hd{display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:28px;text-align:center;}
+.sec-hd-row{display:flex;align-items:center;gap:14px;width:100%;}
+.sec-hd h2{font-size:19px;font-weight:900;text-transform:uppercase;letter-spacing:1.5px;color:#fff;white-space:nowrap;}
+.sec-hd .dot{width:6px;height:6px;border-radius:50%;background:var(--or);flex-shrink:0;}
+.sec-hd .ln{flex:1;height:1px;background:var(--brd);}
+.sec-hd .sec-sub{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gray);font-weight:600;}
+
+.sub-lbl{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin:20px 0 14px;}
+.sub-lbl.accent{color:var(--or);}
+.sub-lbl.gray{color:var(--gray);}
+
+/* ══ GRILLE UNIVERSELLE — même taille partout ══ */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);}
+@media(max-width:440px){.grid{grid-template-columns:1fr;}}
+
+.card{background:var(--card2);border:1px solid var(--brd);border-radius:12px;padding:16px;transition:border-color .2s,transform .15s;display:flex;flex-direction:column;min-width:0;}
+.card:hover{border-color:var(--lgray);transform:translateY(-1px);}
+.card .nm{font-size:13px;font-weight:600;color:var(--cream);line-height:1.35;margin-bottom:6px;word-wrap:break-word;}
+.card .ds{font-size:11px;color:var(--gray);line-height:1.6;margin-bottom:10px;font-weight:400;}
+.card .pr{font-size:14px;font-weight:700;color:var(--or);margin-top:auto;}
+.card.wide{grid-column:span 2;}
+@media(max-width:440px){.card.wide{grid-column:span 1;}}
+.card.sig{grid-column:span 2;background:var(--card);border:1px solid rgba(232,98,26,.28);border-left:3px solid var(--or);padding:16px 16px 16px 20px;}
+@media(max-width:440px){.card.sig{grid-column:span 1;}}
+.card.sig .nm{font-size:14px;color:#fff;}
+.card.sig .pr{font-size:15px;}
+
+/* ══ INCONTOURNABLES — MÊME taille que grille standard ══ */
+/* On réutilise .grid et .card pour uniformité totale */
+.inco-group{
+  grid-column:span 2;
+  display:flex;align-items:center;gap:12px;
+  margin-top:24px;margin-bottom:4px;
+}
+.inco-group:first-child{margin-top:0;}
+@media(max-width:440px){.inco-group{grid-column:span 1;}}
+.ig-dot{width:6px;height:6px;border-radius:50%;background:var(--or);flex-shrink:0;}
+.ig-title{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--or);white-space:nowrap;}
+.ig-line{flex:1;height:1px;background:var(--brd);}
+
+/* Carte incontournable — style distinct mais même largeur que .card */
+.ic{
+  background:linear-gradient(145deg,#1d1308 0%,#261809 100%);
+  border:1px solid rgba(232,98,26,.20);border-top:2px solid var(--or);
+  border-radius:12px;padding:16px;
+  display:flex;flex-direction:column;gap:6px;
+  transition:border-color .2s,transform .2s,box-shadow .2s;
+  min-width:0;
+}
+.ic:hover{border-color:rgba(232,98,26,.48);transform:translateY(-2px);box-shadow:0 8px 22px rgba(232,98,26,.14);}
+.ic.full{grid-column:span 2;}
+@media(max-width:440px){.ic.full{grid-column:span 1;}}
+.ic .ic-badge{font-size:8.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--or);word-wrap:break-word;}
+.ic .ic-name{font-size:13px;font-weight:700;color:#fff;line-height:1.3;word-wrap:break-word;}
+.ic .ic-desc{font-size:11px;color:var(--gray);font-weight:400;line-height:1.5;}
+.ic .ic-price{font-size:14px;font-weight:700;color:var(--or);margin-top:auto;}
+.ic.combo{background:linear-gradient(145deg,#171006 0%,#1e1408 100%);border-color:rgba(232,98,26,.32);border-top-color:var(--or);}
+.ic.combo .ic-name{color:var(--or);}
+.ic.coming{opacity:.6;border-style:dashed;}
+.ic.coming .ic-price{color:var(--gray);font-size:12px;}
+
+/* ══ PROMOS ══ */
+.promo-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);}
+@media(max-width:440px){.promo-grid{grid-template-columns:1fr;}}
+.promo-card{background:linear-gradient(135deg,#1a1008 0%,#221508 100%);border:1px solid rgba(232,98,26,.2);border-radius:14px;padding:18px;position:relative;overflow:hidden;display:flex;flex-direction:column;min-width:0;}
+.promo-card::before{content:'';position:absolute;top:-15px;right:-15px;width:60px;height:60px;border-radius:50%;background:rgba(232,98,26,.07);}
+.promo-card .p-days{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--or);margin-bottom:8px;}
+.promo-card .p-title{font-size:14px;font-weight:900;color:#fff;line-height:1.3;margin-bottom:8px;}
+.promo-card .p-desc{font-size:11.5px;color:rgba(250,246,240,.82);line-height:1.65;font-weight:400;}
+.promo-card.full{grid-column:span 2;}
+@media(max-width:440px){.promo-card.full{grid-column:span 1;}}
+.fid-card{background:linear-gradient(135deg,#100e1c 0%,#181530 100%);border:1px solid rgba(120,80,220,.25);border-radius:14px;padding:22px;text-align:center;}
+.fid-icon{font-size:36px;margin-bottom:10px;}
+.fid-title{font-size:16px;font-weight:900;color:#fff;margin-bottom:10px;}
+.fid-desc{font-size:13px;font-weight:500;color:#fff;line-height:1.8;}
+.fid-desc strong{color:var(--or);}
+
+/* Badge */
+.bdg{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 9px;border-radius:4px;margin-bottom:10px;}
+.bdg.or{background:var(--or);color:#fff;}
+.bdg.hot{background:linear-gradient(90deg,#E8621A,#ff8a00);color:#fff;}
+
+/* Simple list */
+.slist{display:flex;flex-direction:column;gap:10px;}
+.srow{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;gap:12px;background:var(--card2);border:1px solid var(--brd);border-radius:10px;transition:border-color .2s;}
+.srow:hover{border-color:var(--lgray);}
+.srow .nm{font-size:13px;font-weight:400;color:var(--cream);}
+.srow .pr{font-size:13px;font-weight:600;color:var(--or);white-space:nowrap;}
+
+/* Ticket */
+.ticket-card{background:linear-gradient(135deg,#100e1c 0%,#181530 100%);border:1px solid rgba(120,80,220,.25);border-radius:14px;padding:24px;grid-column:span 2;text-align:center;}
+@media(max-width:440px){.ticket-card{grid-column:span 1;}}
+.ticket-card .tk-icon{font-size:36px;margin-bottom:10px;}
+.ticket-card .tk-title{font-size:16px;font-weight:900;color:#fff;margin-bottom:10px;}
+.ticket-card .tk-desc{font-size:12.5px;font-weight:500;color:#fff;line-height:1.8;}
+.ticket-card .tk-desc strong{color:var(--or);}
+
+/* Témoignages */
+.temoignages-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);margin-bottom:36px;}
+@media(max-width:440px){.temoignages-grid{grid-template-columns:1fr;}}
+.temoignage-card{background:var(--card2);border:1px solid var(--brd);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px;min-width:0;}
+.temoignage-card .t-quote{font-size:28px;color:var(--or);line-height:1;opacity:.35;font-weight:900;}
+.temoignage-card .t-text{font-size:11.5px;color:var(--cream);line-height:1.75;font-style:italic;font-weight:400;flex:1;}
+.temoignage-card .t-author{display:flex;align-items:center;gap:10px;padding-top:10px;border-top:1px solid var(--brd);}
+.temoignage-card .t-avatar{width:34px;height:34px;border-radius:50%;background:var(--or);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#fff;flex-shrink:0;}
+.temoignage-card .t-name{font-size:11px;font-weight:700;color:#fff;}
+.temoignage-card .t-stars{font-size:10px;color:var(--or);}
+.temoignage-card .t-plat{font-size:10px;color:var(--gray);margin-top:1px;}
+
+/* ══ ZONE CTA ══ */
+.cta-zone{background:var(--bg);border-top:1px solid var(--brd);border-bottom:1px solid var(--brd);padding:44px 20px;text-align:center;margin-top:60px;}
+.cta-zone .cz-inner{max-width:var(--mw);margin:0 auto;}
+.cta-zone .cz-title{font-size:20px;font-weight:900;color:var(--cream);margin-bottom:8px;text-transform:uppercase;letter-spacing:1px;}
+.cta-zone .cz-sub{font-size:13px;font-weight:500;color:#fff;margin-bottom:26px;line-height:1.6;}
+.cta-zone .cz-btns{display:flex;flex-direction:column;align-items:center;gap:12px;}
+.cta-zone .cz-push{font-size:11px;color:var(--gray);margin-top:14px;}
+.cta-zone .cz-push span{color:var(--or);}
+
+/* ══ FAB — FIXE, toujours visible ══ */
+.cart-fab{
+  position:fixed;
+  bottom:22px;right:22px;
+  z-index:9999;
+  background:var(--or);color:#fff;
+  width:64px;height:64px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;border:2px solid rgba(255,255,255,.2);
+  transition:transform .2s;
+  animation:fab-pulse 2s ease-in-out infinite;
+  -webkit-transform:translateZ(0);
+  transform:translateZ(0);
+}
+.cart-fab:hover{transform:scale(1.12);}
+@keyframes fab-pulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(232,98,26,.65),0 6px 28px rgba(232,98,26,.6),0 0 0 8px rgba(232,98,26,.15);}
+  50%{box-shadow:0 0 0 16px rgba(232,98,26,0),0 8px 40px rgba(232,98,26,.85),0 0 0 32px rgba(232,98,26,0);}
+}
+.cart-fab svg{width:28px;height:28px;fill:none;stroke:#fff;stroke-width:2.2;}
+.cart-count{position:absolute;top:-5px;right:-5px;background:#fff;color:var(--or);font-size:10px;font-weight:900;width:22px;height:22px;border-radius:50%;display:none;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.3);}
+.cart-count.show{display:flex;}
+
+/* ══ FOOTER ══ */
+.site-footer{background:#000000;border-top:1px solid var(--brd);padding:60px 16px 48px;text-align:center;}
+.ft-inner{max-width:var(--mw);margin:0 auto;}
+.ft-logo{display:flex;align-items:center;justify-content:center;margin-bottom:10px;}
+.ft-logo img{height:auto;width:min(80vw,400px);max-width:400px;object-fit:contain;}
+.ft-sub{font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:var(--lgray);margin-bottom:28px;}
+.ft-sep{width:40px;height:1px;background:var(--brd);margin:0 auto 28px;}
+
+.ft-vision{max-width:500px;margin:0 auto 36px;padding:24px 12px;border-top:1px solid var(--brd);border-bottom:1px solid var(--brd);}
+.ft-s1{font-size:17px;font-weight:700;color:#fff;margin-bottom:4px;}
+.ft-s2{font-size:12px;font-weight:600;color:var(--or);letter-spacing:1.5px;margin-bottom:18px;}
+.ft-vp{font-size:13px;font-weight:500;color:#fff;line-height:1.82;margin-bottom:8px;}
+.ft-vp2{font-size:12px;font-weight:400;color:#fff;line-height:1.8;margin-top:12px;}
+
+.ft-story{max-width:500px;margin:0 auto 36px;padding:22px 12px;border-top:1px solid var(--brd);border-bottom:1px solid var(--brd);}
+
+.ft-info{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--brd);border:1px solid var(--brd);border-radius:12px;overflow:hidden;margin:0 auto 36px;text-align:left;}
+@media(max-width:560px){.ft-info{grid-template-columns:1fr;}}
+.ft-col{background:#000000;padding:20px 16px;}
+.ft-col .ci-icon{font-size:20px;margin-bottom:10px;display:block;}
+.ft-col .ct{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--or);margin-bottom:11px;display:block;}
+.ft-col p{font-size:12px;font-weight:500;color:#fff;line-height:1.85;}
+.ft-col a{color:#fff;text-decoration:none;font-weight:600;}
+.ft-col a:hover{color:var(--or);}
+.ft-col .ref{font-size:11px;color:#fff;margin-top:5px;display:block;}
+
+.ft-socials{display:flex;justify-content:center;gap:12px;margin-bottom:36px;flex-wrap:wrap;}
+.ft-soc{display:flex;align-items:center;gap:8px;background:var(--dark);border:1px solid var(--brd);border-radius:9px;padding:10px 18px;text-decoration:none;font-size:12px;font-weight:600;color:var(--gray);transition:border-color .2s,color .2s;}
+.ft-soc:hover{border-color:var(--or);color:var(--or);}
+.ft-soc svg{width:18px;height:18px;fill:currentColor;flex-shrink:0;}
+
+.ft-action{background:var(--dark);border:1px solid var(--brd);border-radius:14px;padding:28px 20px;margin:0 auto 32px;max-width:480px;}
+.ft-action .at{font-size:17px;font-weight:900;color:var(--cream);margin-bottom:8px;}
+.ft-action .as{font-size:13px;font-weight:500;color:#fff;margin-bottom:22px;line-height:1.6;}
+.ft-action .act-btns{display:flex;flex-direction:column;gap:12px;align-items:center;}
+.ft-action .push-sub{font-size:11px;font-weight:500;color:var(--gray);margin-top:12px;line-height:1.55;}
+.ft-action .push-sub span{color:var(--or);}
+
+.ft-contact{font-size:12px;font-weight:500;color:#fff;margin:0 auto 32px;max-width:440px;line-height:1.7;}
+.ft-contact a{color:#fff;text-decoration:none;font-weight:600;}
+.ft-contact a:hover{color:var(--or);}
+
+.ft-qr{max-width:480px;margin:0 auto 36px;display:flex;align-items:center;gap:clamp(16px,4vw,32px);background:var(--dark);border:1px solid var(--brd);border-radius:12px;padding:clamp(18px,3vw,28px);text-align:left;}
+@media(max-width:480px){.ft-qr{flex-direction:column;text-align:center;gap:20px;}}
+.qr-wrap{background:#fff;padding:12px;border-radius:9px;flex-shrink:0;}
+.ft-qr .qr-t h3{font-size:13px;font-weight:700;color:#fff;margin-bottom:8px;}
+.ft-qr .qr-t p{font-size:12px;color:var(--gray);line-height:1.75;font-weight:400;}
+.ft-qr .qr-t strong{color:var(--cream);}
+
+.ft-tagline{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#2a2318;margin-bottom:16px;}
+.ft-copy{font-size:10px;letter-spacing:1px;color:#1e1a12;}
+
+/* ══ MODAL — formulaire bien calé sur mobile ══ */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.88);backdrop-filter:blur(5px);align-items:flex-end;justify-content:center;}
+.modal-overlay.open{display:flex;}
+.modal-box{
+  background:var(--card);border-top:2px solid var(--or);
+  border-radius:20px 20px 0 0;
+  width:100%;max-width:560px;
+  padding:24px 16px 32px;
+  max-height:92vh;overflow-y:auto;
+  box-sizing:border-box;
+}
+.modal-hd{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;}
+.modal-box h3{font-size:16px;font-weight:900;text-transform:uppercase;letter-spacing:1px;color:var(--cream);}
+.modal-box .msub{font-size:11.5px;color:var(--gray);margin-bottom:16px;}
+.modal-close{background:none;border:none;color:var(--gray);font-size:24px;cursor:pointer;line-height:1;flex-shrink:0;}
+.push-box{background:var(--or2);border:1px solid var(--orbrd);border-radius:9px;padding:10px 14px;font-size:11.5px;font-weight:600;color:var(--cream);text-align:center;line-height:1.55;margin-bottom:16px;}
+.push-box span{color:var(--or);}
+.cart-form{display:flex;flex-direction:column;gap:12px;}
+.c-lbl{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray);margin-bottom:4px;display:block;}
+.c-lbl .req{color:var(--or);}
+.c-sel,.c-inp{
+  background:var(--card2);border:1px solid var(--brd);
+  color:var(--cream);font-family:'Montserrat',sans-serif;
+  font-size:14px;font-weight:500;
+  padding:12px 14px;border-radius:10px;
+  width:100%;max-width:100%;
+  transition:border-color .2s;
+  box-sizing:border-box;
+}
+.c-sel{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath fill='%237a7068' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;}
+.c-sel:focus,.c-inp:focus{outline:none;border-color:var(--or);}
+.c-sel.error,.c-inp.error{border-color:#ff4444;}
+.qty-row{display:flex;align-items:center;gap:8px;}
+.qty-btn{background:var(--card2);border:1px solid var(--brd);color:var(--cream);width:40px;height:40px;border-radius:10px;font-size:20px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .2s;flex-shrink:0;}
+.qty-btn:hover{border-color:var(--or);}
+.qty-val{font-size:16px;font-weight:700;color:var(--cream);min-width:28px;text-align:center;}
+.add-btn{flex:1;padding:12px 14px;border-radius:10px;border:none;background:var(--or);color:#fff;font-family:'Montserrat',sans-serif;font-weight:700;font-size:12px;cursor:pointer;transition:background .2s;}
+.add-btn:hover{background:#c05010;}
+.c-items{display:flex;flex-direction:column;gap:8px;min-height:28px;}
+.ci{display:flex;justify-content:space-between;align-items:center;background:var(--card2);border:1px solid var(--brd);border-radius:9px;padding:10px 12px;gap:8px;}
+.ci .ci-n{font-size:12px;font-weight:600;color:var(--cream);flex:1;word-break:break-word;}
+.ci .ci-p{font-size:12px;font-weight:700;color:var(--or);white-space:nowrap;flex-shrink:0;}
+.ci .ci-rm{background:none;border:none;color:var(--lgray);cursor:pointer;font-size:16px;padding:0 4px;flex-shrink:0;}
+.ci .ci-rm:hover{color:#ff6060;}
+.empty-msg{text-align:center;color:var(--gray);font-size:12px;padding:14px 0;font-style:italic;}
+.c-total{font-size:13px;font-weight:700;color:var(--cream);text-align:right;padding:10px 0;border-top:1px solid var(--brd);}
+.c-total span{color:var(--or);}
+.c-total .li{font-size:11px;color:var(--gray);font-weight:400;display:block;margin-top:3px;}
+.c-total .tot{font-size:15px;color:var(--or);display:block;margin-top:4px;}
+.c-total .red{font-size:11px;color:#4caf50;font-weight:500;display:block;margin-top:2px;}
+.err-msg{font-size:11px;color:#ff4444;margin-top:4px;display:none;}
+.submit-btn{width:100%;padding:16px;border-radius:60px;border:none;background:var(--green);color:#fff;font-family:'Montserrat',sans-serif;font-weight:900;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 16px rgba(37,211,102,.28);position:relative;overflow:hidden;}
+.submit-btn::before{content:'';position:absolute;top:-50%;left:-80%;width:55%;height:200%;background:linear-gradient(105deg,transparent 28%,rgba(255,255,255,.38) 50%,transparent 72%);transform:skewX(-15deg);animation:shine 2.8s ease-in-out infinite;}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(37,211,102,.4);}
+.submit-btn>*{position:relative;z-index:1;}
+.submit-btn svg{width:20px;height:20px;fill:#fff;}
+
+@media(min-width:780px){
+  .site-header{padding:60px 0 56px;}
+  .site-main{padding:0 24px 60px;}
+  .site-footer{padding:68px 24px 52px;}
+  :root{--gap:16px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header class="site-header">
+  <div class="h-logo">
+    <img src="logo.png" alt="O Menu Restaurant Kinshasa">
+  </div>
+  <p class="h-tag">✦ Cuisine Afro-Urbaine · Kinshasa ✦</p>
+  <div class="h-sep"></div>
+  <p class="h-intro">
+    Bienvenue là où <strong>la cuisine africaine rencontre l'âme urbaine.</strong><br>
+    Chez O Menu, vous n'êtes pas un simple client — <strong>vous êtes le Boss.</strong><br>
+    Chaque plat préparé avec amour, chaque saveur pour vous emporter dans un voyage culinaire unique.
+  </p>
+  <div class="promo-hero">
+    <div class="ph-title">Grosse faim, pas le temps de cuisiner ?<br>O Menu livre votre bonheur !</div>
+    <div class="ph-body">
+      Entre le travail, la famille et les occupations du quotidien — <strong>O Menu apporte le restaurant chez vous.</strong>
+      Commandez ou réservez et nous déposons votre repas <strong>directement à votre porte.</strong>
+      Rapide. Savoureux. Inoubliable.
+    </div>
+  </div>
+  <div class="h-cta">
+    <button class="btn-cmd" onclick="openCart();">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.98 1.61h9.72a2 2 0 001.98-1.61L23 6H6"/></svg>
+      Commandez ici
+    </button>
+    <a href="#" class="btn-wa" onclick="event.preventDefault();openWA('Bonjour O Menu Restaurant Kinshasa, je souhaite commander ou avoir des informations sur votre menu.');">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Nous écrire sur WhatsApp
+    </a>
+  </div>
+  <p class="cta-push">Commandez maintenant et profitez de <span>nos offres &amp; réductions !</span></p>
+</header>
+
+<!-- IMAGE COVER — 100% largeur, hauteur naturelle -->
+<div class="illus-cover">
+  <img src="img-cover.jpg" alt="O Menu Kinshasa — Cuisine Afro-Urbaine">
+  <div class="illus-caption">Chez O Menu Kin — <span>On partage, on sourit, on vit !</span></div>
+</div>
+
+<!-- NAV -->
+<nav class="site-nav" id="sitenav">
+  <a href="#incontournables" class="nav-link">Incontournables</a>
+  <a href="#promos"          class="nav-link">Promos &amp; Fidélité</a>
+  <a href="#afro"            class="nav-link">Plats du Jour</a>
+  <a href="#boissons"        class="nav-link">Boissons</a>
+  <a href="#pack"            class="nav-link">Ticket Resto</a>
+</nav>
+
+<!-- ══ MAIN ══ -->
+<main class="site-main">
+
+<!-- INCONTOURNABLES — utilise .grid et .ic pour uniformité -->
+<section class="menu-section" id="incontournables">
+  <div class="sec-hd">
+    <div class="sec-hd-row"><div class="dot"></div><h2>Nos Incontournables</h2><div class="ln"></div></div>
+    <span class="sec-sub">Les plus commandés par nos clients à Kinshasa</span>
+  </div>
+  <div class="grid">
+    <div class="inco-group"><div class="ig-dot"></div><span class="ig-title">Tacos — Sauce au choix · Viande ou Poulet</span><div class="ig-line"></div></div>
+    <div class="ic"><span class="ic-badge">Taille M</span><div class="ic-name">Tacos M</div><div class="ic-desc">Garni, généreux, sauce au choix</div><div class="ic-price">15 000 FC</div></div>
+    <div class="ic"><span class="ic-badge">Taille L</span><div class="ic-name">Tacos L</div><div class="ic-desc">Pour les grandes faims</div><div class="ic-price">20 000 FC</div></div>
+    <div class="ic"><span class="ic-badge">Taille XL</span><div class="ic-name">Tacos XL</div><div class="ic-desc">Le format qui régale tout le monde</div><div class="ic-price">25 000 FC</div></div>
+    <div class="ic"><span class="ic-badge">XXL · 1 Kilo</span><div class="ic-name">Tacos Extrême</div><div class="ic-desc">Pour les vrais appétits — 1 kilo de bonheur !</div><div class="ic-price">35 000 FC</div></div>
+    <div class="ic combo full"><span class="ic-badge">Combo</span><div class="ic-name">Combo Tacos — Frites + Jus</div><div class="ic-price">20 000 FC</div></div>
+
+    <div class="inco-group"><div class="ig-dot"></div><span class="ig-title">Chawarma — Poulet ou Viande</span><div class="ig-line"></div></div>
+    <div class="ic"><span class="ic-badge">Taille M · Poulet ou Viande</span><div class="ic-name">Chawarma M</div><div class="ic-desc">Le classique, bien garni</div><div class="ic-price">8 000 FC</div></div>
+    <div class="ic"><span class="ic-badge">Taille L · Poulet ou Viande</span><div class="ic-name">Chawarma L</div><div class="ic-desc">Généreux, savoureux, irrésistible</div><div class="ic-price">13 000 FC</div></div>
+    <div class="ic combo full"><span class="ic-badge">Combo</span><div class="ic-name">Combo Chawarma — Frites + Jus</div><div class="ic-price">15 000 FC</div></div>
+
+    <div class="inco-group"><div class="ig-dot"></div><span class="ig-title">Poulet Mayo &amp; Grillades O Menu</span><div class="ig-line"></div></div>
+    <div class="ic"><span class="ic-badge">Demi · Avec accompagnement</span><div class="ic-name">Poulet Mayo Demi</div><div class="ic-desc">Tendre et savoureux — la recette signature</div><div class="ic-price">13 000 FC</div></div>
+    <div class="ic"><span class="ic-badge">Entier · Avec accompagnement</span><div class="ic-name">Poulet Mayo Entier</div><div class="ic-desc">Le festin complet — pour partager ou se régaler seul !</div><div class="ic-price">28 000 FC</div></div>
+    <div class="ic"><span class="ic-badge">Avec accompagnement</span><div class="ic-name">Ailes de Poulet Braisées</div><div class="ic-desc">Dorées, juteuses, bien épicées</div><div class="ic-price">20 000 FC</div></div>
+    <div class="ic"><span class="ic-badge">Avec accompagnement</span><div class="ic-name">Cuisse de Poulet Braisée</div><div class="ic-desc">Tendre, généreuse et bien assaisonnée</div><div class="ic-price">17 000 FC</div></div>
+    <div class="ic full"><span class="ic-badge">Signature · Avec accompagnement</span><div class="ic-name">Côtis Braisé O Menu</div><div class="ic-desc">Notre côtis façon maison, doré à la perfection — un incontournable de la maison.</div><div class="ic-price">25 000 FC</div></div>
+
+    <div class="inco-group"><div class="ig-dot"></div><span class="ig-title">Spaghetti</span><div class="ig-line"></div></div>
+    <div class="ic"><span class="ic-badge">Poulet</span><div class="ic-name">Spaghetti effiloché au poulet</div><div class="ic-price">12 000 FC</div></div>
+    <div class="ic"><span class="ic-badge">Viande</span><div class="ic-name">Spaghetti à la viande</div><div class="ic-price">15 000 FC</div></div>
+
+    <div class="inco-group"><div class="ig-dot"></div><span class="ig-title">Exclusivités O Menu</span><div class="ig-line"></div></div>
+    <div class="ic coming"><span class="ic-badge">✦ Bientôt disponible</span><div class="ic-name">Dindon Mayo</div><div class="ic-desc">Préparé façon O Menu — une exclusivité qui arrive très bientôt !</div><div class="ic-price">25 000 FC — Bientôt</div></div>
+    <div class="ic coming"><span class="ic-badge">✦ Bientôt disponible</span><div class="ic-name">Dindon Braisé</div><div class="ic-desc">Doré, généreux, inoubliable — très bientôt !</div><div class="ic-price">20 000 FC — Bientôt</div></div>
+    <div class="ic full"><span class="ic-badge">Signature</span><div class="ic-name">Ngulu façon O Menu</div><div class="ic-desc">Notre porc préparé avec la recette secrète O Menu — une explosion de saveurs uniques.</div><div class="ic-price">Sur commande</div></div>
+    <div class="ic full"><span class="ic-badge">Africa Food</span><div class="ic-name">Poulet D.G façon O Menu</div><div class="ic-desc">Le grand classique africain revisité à la sauce O Menu. Poulet, banane plantain, légumes — un voyage culinaire dans votre assiette.</div><div class="ic-price">Sur commande</div></div>
+  </div>
+</section>
+
+<!-- PROMOS & FIDÉLITÉ -->
+<section class="menu-section" id="promos">
+  <div class="sec-hd">
+    <div class="sec-hd-row"><div class="dot"></div><h2>Offres &amp; Fidélité</h2><div class="ln"></div></div>
+    <span class="sec-sub">Revenez souvent — on vous récompense !</span>
+  </div>
+  <div class="promo-grid">
+    <div class="promo-card">
+      <div class="p-days">Mardi &amp; Jeudi</div>
+      <div class="p-title">Tacos Day 🌮</div>
+      <div class="p-desc">2 Tacos achetés = Le 3ème Tacos M offert !<br>Profitez-en en famille ou entre amis.</div>
+    </div>
+    <div class="promo-card">
+      <div class="p-days">Vendredi &amp; Samedi</div>
+      <div class="p-title">Chawarma Day 🔥</div>
+      <div class="p-desc">2 Chawarma achetés = Le 3ème Chawarma M offert !<br>Le week-end commence bien chez O Menu.</div>
+    </div>
+    <div class="promo-card full fid-card">
+      <div class="fid-icon">🏆</div>
+      <div class="fid-title">Carte de Fidélité O Menu</div>
+      <div class="fid-desc">
+        <strong>9 commandes effectuées = Le 10ème plat offert !</strong><br><br>
+        Plus vous commandez, plus vous gagnez. Nos clients fidèles bénéficient de <strong>réductions exclusives, cadeaux</strong> et surprises à chaque commande.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMAGE 2 — 2 filles pizza, expressions visibles -->
+<div class="illus-wrap" style="margin-top:52px;margin-left:-16px;margin-right:-16px;width:calc(100% + 32px);">
+  <img src="img-pizza.jpg" alt="On partage, on sourit chez O Menu Kinshasa" style="object-position:center 42%;">
+  <div class="illus-caption"><span>Le Goût.</span> Le Sourire. Le Moment.</div>
+</div>
+
+<!-- PLATS DU JOUR -->
+<section class="menu-section" id="afro">
+  <div class="sec-hd">
+    <div class="sec-hd-row"><div class="dot"></div><h2>Plats du Jour Africains</h2><div class="ln"></div></div>
+    <span class="sec-sub">Le repas complet — légume + viande ou poisson + accompagnement</span>
+  </div>
+  <div class="card wide" style="margin-bottom:20px;background:linear-gradient(135deg,#140e04 0%,#1c1206 100%);border-color:rgba(232,98,26,.3);">
+    <span class="bdg or">À partir de</span>
+    <div class="nm" style="font-size:20px;color:var(--or);font-weight:900;">25 000 FC</div>
+    <div class="ds" style="font-size:12px;line-height:1.8;margin-top:6px;">Le repas africain composé complet avec accompagnement inclus. Nos plats du jour varient selon les arrivages — légume + viande ou poisson + accompagnement.</div>
+  </div>
+  <p class="sub-lbl accent">Nos Viandes &amp; Poissons</p>
+  <div class="grid">
+    <div class="card"><div class="nm">Viande de Bœuf</div></div>
+    <div class="card"><div class="nm">Mipanzi / Côtis</div></div>
+    <div class="card"><div class="nm">Makoso</div><div class="ds">Pieds de porc</div></div>
+    <div class="card"><div class="nm">Tilapia</div></div>
+    <div class="card"><div class="nm">Makayabu</div><div class="ds">Poisson salé</div></div>
+    <div class="card"><div class="nm">Thomsown</div></div>
+  </div>
+  <p class="sub-lbl accent" style="margin-top:24px;">Nos Légumes</p>
+  <div class="grid">
+    <div class="card"><div class="nm">Pondu</div><div class="ds">Feuilles de manioc mijotées</div></div>
+    <div class="card"><div class="nm">Épinard</div></div>
+    <div class="card"><div class="nm">Ndunda</div><div class="ds">Amarante</div></div>
+    <div class="card"><div class="nm">Pondu Madesu</div><div class="ds">Tshaka Madesu</div></div>
+    <div class="card"><div class="nm">Haricot</div></div>
+    <div class="card"><div class="nm">Oseilles</div><div class="ds">Dongo Dongo</div></div>
+  </div>
+  <p class="sub-lbl accent" style="margin-top:24px;">Nos Accompagnements</p>
+  <div class="grid">
+    <div class="card"><div class="nm">Riz</div></div>
+    <div class="card"><div class="nm">Fufu</div></div>
+    <div class="card"><div class="nm">Makemba</div><div class="ds">Banane plantain</div></div>
+    <div class="card"><div class="nm">Frites</div></div>
+  </div>
+</section>
+
+<!-- BOISSONS -->
+<section class="menu-section" id="boissons">
+  <div class="sec-hd">
+    <div class="sec-hd-row"><div class="dot"></div><h2>Boissons</h2><div class="ln"></div></div>
+  </div>
+  <div class="slist">
+    <div class="srow"><span class="nm">Jus naturels</span><span class="pr">5 000 FC / 10 000 FC</span></div>
+    <div class="srow"><span class="nm">Eau minérale</span><span class="pr">1 000 FC / 3 000 FC</span></div>
+    <div class="srow"><span class="nm">Boissons fraîches</span><span class="pr">2 000 FC / 4 000 FC</span></div>
+  </div>
+</section>
+
+<!-- TICKET RESTO -->
+<section class="menu-section" id="pack">
+  <div class="sec-hd">
+    <div class="sec-hd-row"><div class="dot"></div><h2>Ticket Restaurant</h2><div class="ln"></div></div>
+    <span class="sec-sub">Pour les travailleurs et les familles</span>
+  </div>
+  <div class="grid">
+    <div class="ticket-card">
+      <div class="tk-icon">🎫</div>
+      <div class="tk-title">Tickets Restaurants Mensuels</div>
+      <div class="tk-desc">
+        Obtenez vos <strong>tickets restaurants mensuels à des prix imbattables</strong> — idéal pour les entreprises, les travailleurs et les familles.<br><br>
+        <strong>Mangez bien tous les jours sans vous ruiner.</strong> Profitez de nombreux bonus exclusifs réservés aux détenteurs de tickets.<br><br>
+        Contactez-nous pour connaître les formules et tarifs disponibles !
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ZONE CTA -->
+<div class="cta-zone">
+  <div class="cz-inner">
+    <div class="cz-title">Passez votre commande maintenant</div>
+    <div class="cz-sub">Livraison rapide à Kinshasa<br>On s'occupe de vous immédiatement !</div>
+    <div class="cz-btns">
+      <button class="btn-cmd" style="max-width:300px;" onclick="openCart();">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.98 1.61h9.72a2 2 0 001.98-1.61L23 6H6"/></svg>
+        Commandez ici
+      </button>
+      <a href="#" class="btn-wa" style="max-width:300px;" onclick="event.preventDefault();openWA('Bonjour O Menu Restaurant Kinshasa, je souhaite commander.');">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Nous écrire sur WhatsApp
+      </a>
+    </div>
+    <p class="cz-push">Commandez et profitez de <span>nos offres et réductions en cours !</span></p>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer class="site-footer">
+<div class="ft-inner">
+
+  <div class="ft-logo">
+    <img src="logo.png" alt="O Menu Restaurant Kinshasa">
+  </div>
+  <p class="ft-sub">Cuisine Afro-Urbaine · Kinshasa — RDC</p>
+  <div class="ft-sep"></div>
+
+  <div class="ft-vision">
+    <div class="ft-s1">Le Goût. Le Sourire. Le Moment.</div>
+    <div class="ft-s2">✦ Le voyage culinaire parfait ! ✦</div>
+    <p class="ft-vp">Chez nous, on ne mange pas seulement. On partage, on sourit, on vit des instants qui restent gravés dans les mémoires. C'est ça, l'expérience O Menu.</p>
+    <p class="ft-vp2">Chaque plat est préparé avec amour, chaque saveur pensée pour vous emporter dans un voyage culinaire unique — celui des épices authentiques, des textures généreuses et des recettes qui parlent à l'âme.</p>
+  </div>
+
+  <div class="ft-story">
+    <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--or);margin-bottom:14px;">Notre Histoire</div>
+    <p style="font-size:13px;font-weight:500;color:#fff;line-height:1.82;margin-bottom:10px;">O Menu est né de la volonté de mettre le client au centre de tout notre service. Et chez nous, on dit : <strong style="color:var(--or)">c'est vous le Boss.</strong> Tout est pensé pour votre satisfaction.</p>
+    <p style="font-size:12px;font-weight:400;color:#fff;line-height:1.8;">Nous faisons un maximum pour ouvrir un voyage culinaire parfait dans vos assiettes — des épices authentiques, des textures généreuses, des recettes qui parlent à l'âme. Alors n'attendez plus.</p>
+  </div>
+
+  <div class="ft-info">
+    <div class="ft-col">
+      <span class="ci-icon">📍</span>
+      <span class="ct">Notre Adresse</span>
+      <p>Kintambo &amp; Gombe<br>Kinshasa — RDC<span class="ref">Livraison disponible<br>dans toute la ville</span></p>
+    </div>
+    <div class="ft-col">
+      <span class="ci-icon">🕐</span>
+      <span class="ct">Horaires</span>
+      <p><strong style="color:var(--or)">Mardi – Dimanche</strong><br>11h00 à 21h00<br><br><span style="color:#fff;font-weight:400;">Lundi</span> — Fermé</p>
+    </div>
+    <div class="ft-col">
+      <span class="ci-icon">🛵</span>
+      <span class="ct">Livraison Rapide</span>
+      <p>Livraison à Kinshasa !<br>Profitez de <strong style="color:var(--or);">réductions</strong> sur vos commandes.<br><br>Zone 1 : <strong style="color:var(--or)">7 000 FC</strong><br>Zone 2 : <strong style="color:var(--or)">10 000 FC</strong></p>
+    </div>
+  </div>
+
+  <!-- COMMANDER FOOTER -->
+  <div class="ft-action">
+    <div class="at">Passez votre commande maintenant</div>
+    <div class="as">Livraison rapide à Kinshasa<br>On s'occupe de vous immédiatement !</div>
+    <div class="act-btns">
+      <button class="btn-cmd" style="max-width:100%;width:100%;" onclick="openCart();">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.98 1.61h9.72a2 2 0 001.98-1.61L23 6H6"/></svg>
+        Commandez ici
+      </button>
+      <a href="#" class="btn-wa" style="max-width:100%;width:100%;" onclick="event.preventDefault();openWA('Bonjour O Menu Restaurant Kinshasa, je souhaite commander ou avoir des informations.');">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Nous écrire sur WhatsApp
+      </a>
+    </div>
+    <p class="push-sub">Commandez et profitez de <span>nos offres et réductions en cours !</span></p>
+  </div>
+
+  <!-- CONTACT — numéro affiché seulement, WhatsApp sur l'autre numéro -->
+  <p class="ft-contact">
+    Pour toute correspondance, partenariat ou besoin spécifique :<br>
+    <a href="mailto:chezomenukin@gmail.com">chezomenukin@gmail.com</a> &nbsp;·&nbsp; <span style="color:#fff;font-weight:600;">+243 83 83 60 767</span>
+  </p>
+
+  <!-- TÉMOIGNAGES -->
+  <div style="margin-bottom:36px;">
+    <div class="sec-hd" style="margin-bottom:20px;">
+      <div class="sec-hd-row"><div class="dot"></div><h2 style="font-size:16px;">Ils nous font confiance</h2><div class="ln"></div></div>
+      <span class="sec-sub">Ce que nos clients disent de O Menu Kinshasa</span>
+    </div>
+    <div class="temoignages-grid">
+      <div class="temoignage-card">
+        <div class="t-quote">"</div>
+        <div class="t-text">Les Tacos chez O Menu, c'est vraiment une autre dimension ! La sauce est parfaite, la garniture généreuse. C'est devenu mon repas préféré à Kinshasa !</div>
+        <div class="t-author"><div class="t-avatar">EL</div><div><div class="t-name">Elvis Lungila</div><div class="t-stars">★★★★★</div><div class="t-plat">Tacos XL sauce blanche</div></div></div>
+      </div>
+      <div class="temoignage-card">
+        <div class="t-quote">"</div>
+        <div class="t-text">Le Poulet Mayo est incroyable — tendre, bien assaisonné. La livraison est rapide et le plat arrive encore chaud. O Menu, c'est vraiment le top à Kin !</div>
+        <div class="t-author"><div class="t-avatar">AM</div><div><div class="t-name">Annaïs Mutombo</div><div class="t-stars">★★★★★</div><div class="t-plat">Poulet Mayo Entier</div></div></div>
+      </div>
+      <div class="temoignage-card">
+        <div class="t-quote">"</div>
+        <div class="t-text">J'ai commandé le Chawarma et j'ai été bluffée. La viande est parfumée, la garniture bien équilibrée. Avec les frites et le jus, c'était complet et délicieux !</div>
+        <div class="t-author"><div class="t-avatar">GL</div><div><div class="t-name">Grâce Losako</div><div class="t-stars">★★★★★</div><div class="t-plat">Combo Chawarma Viande</div></div></div>
+      </div>
+      <div class="temoignage-card">
+        <div class="t-quote">"</div>
+        <div class="t-text">Le Pondu avec côtis braisé, c'est exactement comme à la maison — même mieux ! O Menu a vraiment compris l'âme de la cuisine congolaise. Bravo !</div>
+        <div class="t-author"><div class="t-avatar">DK</div><div><div class="t-name">David Katemb</div><div class="t-stars">★★★★★</div><div class="t-plat">Plat du Jour — Pondu &amp; Côtis</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RÉSEAUX : Facebook, Instagram, TikTok -->
+  <div class="ft-socials">
+    <a href="https://www.facebook.com/share/14WTfnwYu4V/" class="ft-soc" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      Facebook
+    </a>
+    <a href="https://www.instagram.com/omenu_restaurant_kin?igsh=MWp2MnZvb3JkYmhycg==" class="ft-soc" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      Instagram
+    </a>
+    <a href="#" class="ft-soc" onclick="event.preventDefault();">
+      <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.15a8.16 8.16 0 004.77 1.52V7.22a4.85 4.85 0 01-1-.53z"/></svg>
+      TikTok
+    </a>
+  </div>
+
+  <!-- QR CODE — URL Vercel -->
+  <div class="ft-qr">
+    <div class="qr-wrap"><div id="qrcode"></div></div>
+    <div class="qr-t">
+      <h3>Partagez notre menu à vos proches</h3>
+      <p>Scannez ce QR code et envoyez-le à votre famille et vos amis.<br><strong>Ils accèdent directement au menu</strong> et peuvent commander en un clic.<br><br><span style="color:var(--or);font-size:11px;font-weight:600;">Partagez. Recommandez. Régalez !</span></p>
+    </div>
+  </div>
+
+  <p class="ft-tagline">Le Pari du Rêve Africain</p>
+  <div class="ft-copy">© 2025 O Menu Restaurant Kinshasa — Tous droits réservés</div>
+
+</div>
+</footer>
+
+<!-- FAB — fixe, toujours visible -->
+<button class="cart-fab" onclick="openCart();" aria-label="Commander">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.98 1.61h9.72a2 2 0 001.98-1.61L23 6H6"/></svg>
+  <span class="cart-count" id="cart-count">0</span>
+</button>
+
+<!-- ══ MODAL COMMANDE ══ -->
+<div class="modal-overlay" id="cart-modal" onclick="closeOut(event)">
+<div class="modal-box">
+  <div class="modal-hd">
+    <div><h3>Votre Commande</h3><p class="msub">Remplissez les champs — votre commande part sur WhatsApp !</p></div>
+    <button class="modal-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="push-box">Réductions disponibles ! <span>Réduction possible selon votre commande et votre fidélité !</span></div>
+  <div class="cart-form">
+
+    <div>
+      <span class="c-lbl">Choisir un plat <span class="req">*</span></span>
+      <select class="c-sel" id="dish-select">
+        <option value="" data-price="0">Quel plat vous fait envie ?</option>
+        <optgroup label="Tacos — Sauce au choix">
+          <option value="Tacos M" data-price="15000">Tacos M — 15 000 FC</option>
+          <option value="Tacos L" data-price="20000">Tacos L — 20 000 FC</option>
+          <option value="Tacos XL" data-price="25000">Tacos XL — 25 000 FC</option>
+          <option value="Tacos Extrême XXL 1 Kilo" data-price="35000">Tacos Extrême XXL 1 Kilo — 35 000 FC</option>
+          <option value="Combo Tacos + Frites + Jus" data-price="20000">Combo Tacos + Frites + Jus — 20 000 FC</option>
+        </optgroup>
+        <optgroup label="Chawarma — Poulet ou Viande">
+          <option value="Chawarma M" data-price="8000">Chawarma M Poulet ou Viande — 8 000 FC</option>
+          <option value="Chawarma L" data-price="13000">Chawarma L Poulet ou Viande — 13 000 FC</option>
+          <option value="Combo Chawarma + Frites + Jus" data-price="15000">Combo Chawarma + Frites + Jus — 15 000 FC</option>
+        </optgroup>
+        <optgroup label="Poulet Mayo et Grillades">
+          <option value="Poulet Mayo Demi" data-price="13000">Poulet Mayo Demi — 13 000 FC</option>
+          <option value="Poulet Mayo Entier" data-price="28000">Poulet Mayo Entier — 28 000 FC</option>
+          <option value="Ailes de Poulet Braisées" data-price="20000">Ailes de Poulet Braisées — 20 000 FC</option>
+          <option value="Cuisse de Poulet Braisée" data-price="17000">Cuisse de Poulet Braisée — 17 000 FC</option>
+          <option value="Côtis Braisé O Menu" data-price="25000">Côtis Braisé O Menu — 25 000 FC</option>
+        </optgroup>
+        <optgroup label="Spaghetti">
+          <option value="Spaghetti effiloché au poulet" data-price="12000">Spaghetti effiloché au poulet — 12 000 FC</option>
+          <option value="Spaghetti à la viande" data-price="15000">Spaghetti à la viande — 15 000 FC</option>
+        </optgroup>
+        <optgroup label="Exclusivités O Menu">
+          <option value="Ngulu façon O Menu" data-price="0">Ngulu façon O Menu — Prix sur commande</option>
+          <option value="Poulet D.G façon O Menu" data-price="0">Poulet D.G façon O Menu — Prix sur commande</option>
+        </optgroup>
+        <optgroup label="Plats du Jour Africains">
+          <option value="Plat du Jour Africain complet" data-price="25000">Plat du Jour Africain complet — à partir de 25 000 FC</option>
+        </optgroup>
+        <optgroup label="Ticket Restaurant">
+          <option value="Ticket Restaurant mensuel" data-price="0">Ticket Restaurant mensuel — Prix sur demande</option>
+        </optgroup>
+      </select>
+      <p class="err-msg" id="err-dish">Veuillez choisir un plat avant d'ajouter.</p>
+    </div>
+
+    <div>
+      <span class="c-lbl">Quantité</span>
+      <div class="qty-row">
+        <button class="qty-btn" onclick="chQty(-1)">−</button>
+        <span class="qty-val" id="qty-val">1</span>
+        <button class="qty-btn" onclick="chQty(1)">+</button>
+        <button class="add-btn" onclick="addItem()">Ajouter au panier</button>
+      </div>
+    </div>
+
+    <div>
+      <span class="c-lbl">Votre commande</span>
+      <div class="c-items" id="cart-items"><div class="empty-msg">Votre panier est vide — choisissez un plat ci-dessus</div></div>
+      <div class="c-total" id="c-total" style="display:none">
+        Sous-total : <span id="sub-total">0</span> FC
+        <span class="li" id="livr-info"></span>
+        <span class="tot" id="total-line"></span>
+        <span class="red">Réduction possible selon votre commande et votre fidélité !</span>
+      </div>
+    </div>
+
+    <div>
+      <span class="c-lbl">Commune de livraison <span class="req">*</span></span>
+      <select class="c-sel" id="zone-select" onchange="calcTotal()">
+        <optgroup label="Zone 1 — 7 000 FC">
+          <option value="Gombe" data-livr="7000">Gombe — 7 000 FC</option>
+          <option value="Lingwala" data-livr="7000">Lingwala — 7 000 FC</option>
+          <option value="Kintambo" data-livr="7000">Kintambo — 7 000 FC</option>
+          <option value="Barumbu" data-livr="7000">Barumbu — 7 000 FC</option>
+          <option value="Kinshasa (commune)" data-livr="7000">Kinshasa (commune) — 7 000 FC</option>
+          <option value="Macampagne" data-livr="7000">Macampagne — 7 000 FC</option>
+          <option value="GB" data-livr="7000">GB — 7 000 FC</option>
+          <option value="Météo" data-livr="7000">Météo — 7 000 FC</option>
+          <option value="Kasa-Vubu" data-livr="7000">Kasa-Vubu — 7 000 FC</option>
+          <option value="Kalamu" data-livr="7000">Kalamu — 7 000 FC</option>
+        </optgroup>
+        <optgroup label="Zone 2 — 10 000 FC">
+          <option value="Ngaliema" data-livr="10000">Ngaliema — 10 000 FC</option>
+          <option value="Delvaux" data-livr="10000">Delvaux — 10 000 FC</option>
+          <option value="Pigeon" data-livr="10000">Pigeon — 10 000 FC</option>
+          <option value="UPN" data-livr="10000">UPN — 10 000 FC</option>
+          <option value="Mimosa" data-livr="10000">Mimosa — 10 000 FC</option>
+          <option value="BIKIN" data-livr="10000">BIKIN — 10 000 FC</option>
+          <option value="Pompage" data-livr="10000">Pompage — 10 000 FC</option>
+          <option value="Limete" data-livr="10000">Limete — 10 000 FC</option>
+          <option value="Lemba" data-livr="10000">Lemba — 10 000 FC</option>
+        </optgroup>
+        <option value="Autre commune" data-livr="0">Autre commune — préciser dans l'adresse</option>
+      </select>
+    </div>
+
+    <div>
+      <span class="c-lbl">Adresse complète <span class="req">*</span></span>
+      <input type="text" class="c-inp" id="addr-input" placeholder="Rue, quartier, point de repère précis...">
+      <p class="err-msg" id="err-addr">Veuillez indiquer votre adresse de livraison.</p>
+    </div>
+
+    <div>
+      <span class="c-lbl">La livraison est pour <span class="req">*</span></span>
+      <select class="c-sel" id="for-who" onchange="toggleRecip()">
+        <option value="moi">Pour moi-même</option>
+        <option value="autre">Pour quelqu'un d'autre</option>
+      </select>
+    </div>
+
+    <div id="recip-field" style="display:none;">
+      <span class="c-lbl">Nom du destinataire <span class="req">*</span></span>
+      <input type="text" class="c-inp" id="recip-name" placeholder="Nom et prénom du destinataire">
+      <p class="err-msg" id="err-recip">Veuillez indiquer le nom du destinataire.</p>
+    </div>
+
+    <div>
+      <span class="c-lbl">Votre nom <span class="req">*</span></span>
+      <input type="text" class="c-inp" id="name-input" placeholder="Votre prénom et nom">
+      <p class="err-msg" id="err-name">Veuillez indiquer votre nom.</p>
+    </div>
+
+    <div>
+      <span class="c-lbl">Votre numéro de téléphone <span class="req">*</span></span>
+      <input type="tel" class="c-inp" id="phone-input" placeholder="+243 000 000 000">
+      <p class="err-msg" id="err-phone">Veuillez indiquer votre numéro de téléphone.</p>
+    </div>
+
+    <button class="submit-btn" onclick="submitOrder()">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <span>Envoyer ma commande sur WhatsApp</span>
+    </button>
+  </div>
+</div>
+</div>
+
+<script>
+// QR code — URL Vercel
+window.addEventListener('load',function(){
+  try{new QRCode(document.getElementById('qrcode'),{text:'https://omenukinshasa.vercel.app/',width:100,height:100,colorDark:'#1a1714',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M});}catch(e){}
+});
+
+// Nav active
+const navLinks=document.querySelectorAll('.nav-link');
+const sections=document.querySelectorAll('.menu-section');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      navLinks.forEach(l=>l.classList.remove('active'));
+      const a=document.querySelector('.nav-link[href="#'+e.target.id+'"]');
+      if(a)a.classList.add('active');
+    }
+  });
+},{threshold:.3});
+sections.forEach(s=>obs.observe(s));
+
+let cartItems=[];let qty=1;
+function openCart(){document.getElementById('cart-modal').classList.add('open');document.body.style.overflow='hidden';}
+function closeCart(){document.getElementById('cart-modal').classList.remove('open');document.body.style.overflow='';}
+function closeOut(e){if(e.target===document.getElementById('cart-modal'))closeCart();}
+function chQty(d){qty=Math.max(1,qty+d);document.getElementById('qty-val').textContent=qty;}
+
+function addItem(){
+  const sel=document.getElementById('dish-select');
+  const errDish=document.getElementById('err-dish');
+  if(!sel.value){sel.classList.add('error');errDish.style.display='block';return;}
+  sel.classList.remove('error');errDish.style.display='none';
+  const price=parseInt(sel.options[sel.selectedIndex].dataset.price)||0;
+  cartItems.push({name:sel.value,price:price,qty:qty});
+  renderCart();calcTotal();
+  sel.value='';qty=1;document.getElementById('qty-val').textContent='1';
+}
+
+function removeItem(i){cartItems.splice(i,1);renderCart();calcTotal();}
+
+function renderCart(){
+  const el=document.getElementById('cart-items');
+  if(!cartItems.length){el.innerHTML='<div class="empty-msg">Votre panier est vide — choisissez un plat ci-dessus</div>';document.getElementById('c-total').style.display='none';document.getElementById('cart-count').classList.remove('show');return;}
+  el.innerHTML=cartItems.map((it,i)=>`<div class="ci"><span class="ci-n">${it.qty}x ${it.name}</span><span class="ci-p">${it.price?fmtFC(it.qty*it.price):'Sur demande'}</span><button class="ci-rm" onclick="removeItem(${i})">✕</button></div>`).join('');
+  const cnt=cartItems.reduce((a,b)=>a+b.qty,0);
+  const ccEl=document.getElementById('cart-count');
+  ccEl.textContent=cnt;ccEl.classList.add('show');
+}
+
+function fmtFC(n){return n.toLocaleString('fr-FR')+' FC';}
+
+function calcTotal(){
+  if(!cartItems.length){document.getElementById('c-total').style.display='none';return;}
+  const sub=cartItems.reduce((a,b)=>a+(b.price*b.qty),0);
+  document.getElementById('sub-total').textContent=sub.toLocaleString('fr-FR');
+  const zs=document.getElementById('zone-select');
+  const livr=parseInt(zs.options[zs.selectedIndex].dataset.livr)||0;
+  const livrInfo=document.getElementById('livr-info');
+  const totalLine=document.getElementById('total-line');
+  if(livr>0){livrInfo.textContent='Frais de livraison : '+fmtFC(livr);totalLine.textContent='Total : '+fmtFC(sub+livr);}
+  else{livrInfo.textContent='';totalLine.textContent='';}
+  document.getElementById('c-total').style.display='block';
+}
+calcTotal();
+
+function toggleRecip(){
+  document.getElementById('recip-field').style.display=document.getElementById('for-who').value==='autre'?'block':'none';
+}
+
+function submitOrder(){
+  const name=document.getElementById('name-input').value.trim();
+  const phone=document.getElementById('phone-input').value.trim();
+  const addr=document.getElementById('addr-input').value.trim();
+  let valid=true;
+  if(!cartItems.length){alert('Veuillez ajouter au moins un plat à votre commande.');return;}
+  if(!name){document.getElementById('name-input').classList.add('error');document.getElementById('err-name').style.display='block';valid=false;}
+  else{document.getElementById('name-input').classList.remove('error');document.getElementById('err-name').style.display='none';}
+  if(!phone){document.getElementById('phone-input').classList.add('error');document.getElementById('err-phone').style.display='block';valid=false;}
+  else{document.getElementById('phone-input').classList.remove('error');document.getElementById('err-phone').style.display='none';}
+  if(!addr){document.getElementById('addr-input').classList.add('error');document.getElementById('err-addr').style.display='block';valid=false;}
+  else{document.getElementById('addr-input').classList.remove('error');document.getElementById('err-addr').style.display='none';}
+  const recip=document.getElementById('for-who').value==='autre'?document.getElementById('recip-name').value.trim():'';
+  if(document.getElementById('for-who').value==='autre'&&!recip){document.getElementById('recip-name').classList.add('error');document.getElementById('err-recip').style.display='block';valid=false;}
+  if(!valid)return;
+
+  const zone=document.getElementById('zone-select').value;
+  const livr=parseInt(document.getElementById('zone-select').options[document.getElementById('zone-select').selectedIndex].dataset.livr)||0;
+  const sub=cartItems.reduce((a,b)=>a+(b.price*b.qty),0);
+
+  // Message commence par le nom du client
+  let msg='Bonjour O Menu Kinshasa !\n\n';
+  msg+='👤 *'+name+'* passe une commande\n';
+  msg+='📞 Téléphone : '+phone+'\n\n';
+  msg+='📋 *Commande :*\n';
+  cartItems.forEach(it=>{msg+='  • '+it.qty+'x '+it.name+(it.price?' — '+fmtFC(it.qty*it.price):' — Prix sur demande')+'\n';});
+  msg+='\n📍 *Livraison :*\n';
+  msg+='  Commune : '+zone+'\n';
+  msg+='  Adresse : '+addr+'\n';
+  if(recip)msg+='  Destinataire : '+recip+'\n';
+  msg+='\n💰 Sous-total : '+fmtFC(sub);
+  if(livr>0)msg+='\n🚚 Livraison : '+fmtFC(livr)+'\n💳 Total : '+fmtFC(sub+livr);
+  msg+='\n\n⚡ _Réduction possible selon commande et fidélité !_';
+
+  window.open('https://wa.me/243826029812?text='+encodeURIComponent(msg),'_blank');
+}
+
+function openWA(msg){
+  window.open('https://wa.me/243826029812?text='+encodeURIComponent(msg),'_blank');
+}
+</script>
+</body>
+</html>
